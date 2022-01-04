@@ -1935,7 +1935,7 @@ contract BoredApeYachtClub is ERC721, Ownable {
     /**
      * Set some Bored Apes aside
      */
-    function reserveApes() public onlyOwner {        
+    function reserveApes() public onlyOwner {
         uint supply = totalSupply();
         uint i;
         for (i = 0; i < 30; i++) {
@@ -1948,9 +1948,9 @@ contract BoredApeYachtClub is ERC721, Ownable {
      */
     function setRevealTimestamp(uint256 revealTimeStamp) public onlyOwner {
         REVEAL_TIMESTAMP = revealTimeStamp;
-    } 
+    }
 
-    /*     
+    /*
     * Set provenance once it's calculated
     */
     function setProvenanceHash(string memory provenanceHash) public onlyOwner {
@@ -1976,7 +1976,7 @@ contract BoredApeYachtClub is ERC721, Ownable {
         require(numberOfTokens <= maxApePurchase, "Can only mint 20 tokens at a time");
         require(totalSupply().add(numberOfTokens) <= MAX_APES, "Purchase would exceed max supply of Apes");
         require(apePrice.mul(numberOfTokens) <= msg.value, "Ether value sent is not correct");
-        
+
         for(uint i = 0; i < numberOfTokens; i++) {
             uint mintIndex = totalSupply();
             if (totalSupply() < MAX_APES) {
@@ -1988,7 +1988,7 @@ contract BoredApeYachtClub is ERC721, Ownable {
         // the end of pre-sale, set the starting index block
         if (startingIndexBlock == 0 && (totalSupply() == MAX_APES || block.timestamp >= REVEAL_TIMESTAMP)) {
             startingIndexBlock = block.number;
-        } 
+        }
     }
 
     /**
@@ -1997,7 +1997,7 @@ contract BoredApeYachtClub is ERC721, Ownable {
     function setStartingIndex() public {
         require(startingIndex == 0, "Starting index is already set");
         require(startingIndexBlock != 0, "Starting index block must be set");
-        
+
         startingIndex = uint(blockhash(startingIndexBlock)) % MAX_APES;
         // Just a sanity case in the worst case if this function is called late (EVM only stores last 256 block hashes)
         if (block.number.sub(startingIndexBlock) > 255) {
@@ -2015,7 +2015,7 @@ contract BoredApeYachtClub is ERC721, Ownable {
      */
     function emergencySetStartingIndexBlock() public onlyOwner {
         require(startingIndex == 0, "Starting index is already set");
-        
+
         startingIndexBlock = block.number;
     }
 }

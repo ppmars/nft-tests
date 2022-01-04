@@ -36,6 +36,11 @@ module.exports = {
 networks: {
     development: {
         host: "127.0.0.1",
+        port: 7545,
+        network_id: "*"
+      },
+    development7: {
+        host: "127.0.0.1",
         port: 8545,
         network_id: "*"
         }
@@ -68,7 +73,7 @@ networks: {
   // NOTE: It is not possible to migrate your contracts to truffle DB and you should
   // make a backup of your artifacts to a safe location before enabling this feature.
   //
-  // After you backed up your artifacts you can utilize db by running migrate as follows: 
+  // After you backed up your artifacts you can utilize db by running migrate as follows:
   // $ truffle migrate --reset --compile-all
   //
   // db: {

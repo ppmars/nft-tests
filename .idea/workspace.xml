@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="ea79f6b4-1605-4913-984b-64a13ab95637" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/nft-tests.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/nft-twint-tests.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/abi.py" beforeDir="false" afterPath="$PROJECT_DIR$/abi.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/Address.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/Address.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/BoredApeYachtClub.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/BoredApeYachtClub.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/Context.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/Context.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/ERC165.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/ERC165.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/ERC721.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/ERC721.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/EnumerableMap.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/EnumerableMap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/EnumerableSet.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/EnumerableSet.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/IERC165.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/IERC165.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721Enumerable.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721Enumerable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721Metadata.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721Metadata.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721Receiver.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/IERC721Receiver.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/Migrations.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/Migrations.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/Ownable.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/Ownable.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/SafeMath.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/SafeMath.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/build/contracts/Strings.json" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/build/contracts/Strings.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/contracts/BAYC.sol" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/contracts/BAYC.sol" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-contracts/truffle-config.js" beforeDir="false" afterPath="$PROJECT_DIR$/test-contracts/truffle-config.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/web3test.py" beforeDir="false" afterPath="$PROJECT_DIR$/web3test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -33,7 +46,9 @@
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
   </component>
   <component name="RunManager">
@@ -73,7 +88,8 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1641089095772</updated>
-      <workItem from="1641089097544" duration="673000" />
+      <workItem from="1641089097544" duration="1890000" />
+      <workItem from="1641267976541" duration="5447000" />
     </task>
     <servers />
   </component>
@@ -90,8 +106,9 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/nft_tests$web3test.coverage" NAME="web3test Coverage Results" MODIFIED="1641089738737" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nft_tests$web3test.coverage" NAME="web3test Coverage Results" MODIFIED="1641273205554" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
