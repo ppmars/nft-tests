@@ -50,16 +50,6 @@ class OpenSea:
         raise Exception(
             "[Error] request returned code {} with reason {}".format(response.status_code, response.reason))
 
-    @staticmethod
-    def getFloorPrice(collection):
-        return float(collection['stats']['floor_price'])
-
-    def getERC721Address(self, collection):
-        for contract in collection['primary_asset_contracts']:
-            # make sure address pertains for an ERC721 contract
-            if contract["asset_contract_type"] == "non-fungible":
-                return contract["address"]
-
     def getCollection(self, name):
         # create request url
         url = self.endpoints["collections"] + str(name)
