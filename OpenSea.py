@@ -95,11 +95,3 @@ class Collection:
 
         self.stats = jsonData['stats']
         self.floor = jsonData['stats']['floor_price']
-
-# OpS = OpenSea()
-# a = OpS.getAssets(2, 0)
-# c = OpS.getCollection('boredapeyachtclub')
-# a = OpS.getERC721Address(c)
-# for asset in a:
-#     print(asset.token_id)
-# print(a)
