@@ -1,5 +1,5 @@
 import json
-
+import js2py
 import requests
 
 
@@ -63,6 +63,32 @@ class OpenSea:
 
 class Asset:
     def __init__(self, jsonData):
+        self.js = {
+            'buy':
+                """
+                            import * as Web3 from 'web3'
+                            import {{ OpenSeaPort, Network }} from 'opensea-js'
+        
+                            // This example provider won't let you make transactions, only read-only calls:
+                            const provider = new Web3.providers.HttpProvider('https://mainnet.infura.io')
+        
+                            const seaport = new OpenSeaPort(provider, {{
+                              networkName: Network.Main,
+                              // apiKey: YOUR_API_KEY
+                            }})
+                            const order = await seaport.api.getOrder({{ side:
+                                OrderSide.Sell,
+                                asset_contract_address: "{}"}},
+                                token_id: {}}}
+                                }})
+                            const accountAddress = "{}"}} // The buyer's wallet address, also the taker
+                            const transactionHash = await this.props.seaport.fulfillOrder({{ order, accountAddress }})
+                            function getTransactionHash(transactionHash){{
+                                return transactionHash
+                            }}
+                            getTransactionHash(transactionHash)
+                """
+        }
         self.jsonData = jsonData
         self.token_id = jsonData['token_id']
         self.name = jsonData['name']
@@ -72,8 +98,14 @@ class Asset:
         else:
             self.current_price = None
 
+        self.ERC721address = None
         if jsonData["asset_contract"]["asset_contract_type"] == "non-fungible":
             self.ERC721address = jsonData["asset_contract"]["address"]
+
+    def buy(self, buyer_address):
+        buyOrder = self.js['buy'].format(self.ERC721address, self.token_id, buyer_address)
+        order = js2py.eval_js6(buyOrder)
+        return order
 
 class Collection:
     def __init__(self, jsonData):

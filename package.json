@@ -1,0 +1,24 @@
+{
+  "name": "nft-tests",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "order.js",
+  "dependencies": {
+    "opensea-js": "^1.2.7"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabrielruoff/nft-tests.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabrielruoff/nft-tests/issues"
+  },
+  "homepage": "https://github.com/gabrielruoff/nft-tests#readme"
+}
