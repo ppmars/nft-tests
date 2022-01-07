@@ -1,15 +1,26 @@
 import json
+import math
+import time
+
 import js2py
 import requests
+import os
+from dotenv import load_dotenv
 
 
 class OpenSea:
     def __init__(self):
+        load_dotenv()
+        self.request_delay = 3
+        self.api_keys = {
+            "opensea": os.environ.get("OPENSEA_API_KEY")
+        }
         self.endpoints = {
             "assets": "https://api.opensea.io/api/v1/assets",
             "events": "https://api.opensea.io/api/v1/events",
             "orders": "https://api.opensea.io/wyvern/v1/orders",
-            "collections": "https://api.opensea.io/collection/"
+            "collections": "https://api.opensea.io/collection/",
+            "events": "https://api.opensea.io/api/v1/events"
         }
         self.param_names = {
             "assets": [
@@ -24,20 +35,42 @@ class OpenSea:
                 "owner",
                 "traits",
                 "last_sale",
+            ],
+            "events": [
+                "asset_contract_address",
+                "collection_slug",
+                "token_id",
+                "account_address",
+                "event_type",
+                "only_opensea",
+                "auction_type",
+                "offset",
+                "limit",
+                "occurred_before",
+                "occurred_after"
             ]
         }
+        self.request_headers = {
+            "Accept": "application/json",
+        }
 
-    def getAssets(self, limit, offset="", token_ids="", image_url="", background_color="", name="", external_link="",
-                  asset_contract="", owner="", traits="", last_sale=""):
-
-        _params = [limit, offset, token_ids, image_url, background_color, name, external_link, asset_contract, owner,
-                   traits, last_sale]
+    def _build_request_params(self, _params, request_type):
         # build request params
         params = {}
         for i, _param in enumerate(_params):
             # if the param was passed
             if _param:
-                params[self.param_names["assets"][i]] = _param
+                params[self.param_names[request_type][i]] = _param
+        return params
+
+    def get_assets(self, limit, offset="", token_ids="", image_url="", background_color="", name="", external_link="",
+                   asset_contract="", owner="", traits="", last_sale=""):
+
+        _params = [limit, offset, token_ids, image_url, background_color, name, external_link, asset_contract, owner,
+                   traits, last_sale]
+        # build request params
+        params = self._build_request_params(_params, "assets")
+
         # submit request to the OpenSea api
         response = requests.request("GET", self.endpoints["assets"], params=params)
         # if response OK
@@ -50,7 +83,7 @@ class OpenSea:
         raise Exception(
             "[Error] request returned code {} with reason {}".format(response.status_code, response.reason))
 
-    def getCollection(self, name):
+    def get_collection(self, name):
         # create request url
         url = self.endpoints["collections"] + str(name)
         # submit request to the OpenSea api
@@ -60,6 +93,32 @@ class OpenSea:
             return Collection(response['collection'])
         raise Exception(
             "[Error] request returned code {} with reason {}".format(response.status_code, response.reason))
+
+    def get_events(self, limit, asset_contract_address="", collection_slug="", token_id="", account_address="",
+                   event_type="",
+                   only_opensea="", auction_type="", offset="", occurred_before="", occurred_after=""):
+        _params = [asset_contract_address, collection_slug, token_id, account_address, event_type, only_opensea,
+                   auction_type, offset, limit, occurred_before, occurred_after]
+
+        # build request params and headers
+        params = self._build_request_params(_params, "events")
+        headers = self.request_headers
+        headers["X-API-KEY"] = self.api_keys["opensea"]
+        print(headers)
+
+        # opensea limit per request
+        # submit request to the OpenSea api
+        response = requests.request("GET", self.endpoints["events"], params=params, headers=headers)
+        # if response OK
+        events = []
+        # print(response.text)
+        if response.status_code == 200:
+            response = json.loads(response.text)
+            for event in response['asset_events']:
+                events.append(Event(event))
+        return events
+        raise Exception("[Error] request returned code {} with reason {}".format(response.status_code, response.reason))
+
 
 class Asset:
     def __init__(self, jsonData):
@@ -107,6 +166,7 @@ class Asset:
         order = js2py.eval_js6(buyOrder)
         return order
 
+
 class Collection:
     def __init__(self, jsonData):
         self.jsonData = jsonData
@@ -117,3 +177,19 @@ class Collection:
 
         self.stats = jsonData['stats']
         self.floor = jsonData['stats']['floor_price']
+
+
+class Event:
+    def __init__(self, jsonData):
+        self.jsonData = jsonData
+        self.token_id = jsonData['asset']['token_id']
+        self.name = jsonData['asset']['name']
+        self.created_date = jsonData['created_date']
+        self.is_private = jsonData['is_private']
+        self.payment_token = jsonData['payment_token']
+        self.total_price = jsonData['total_price']
+        self.event_type = jsonData['event_type']
+
+        self.ERC721address = None
+        if jsonData["asset"]["asset_contract"]["asset_contract_type"] == "non-fungible":
+            self.ERC721address = jsonData["asset"]["asset_contract"]["address"]
