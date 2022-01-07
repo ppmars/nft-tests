@@ -8,7 +8,7 @@ const provider = new Web3.providers.HttpProvider("https://mainnet.infura.io/v3/"
 
 const seaport = new OpenSeaPort(provider, {
     networkName: Network.Main,
-    apiKey: "dgdgdf"
+    apiKey: process.env.OPENSEA_API_KEY
 })
 
 const order = await seaport.api.getOrder({

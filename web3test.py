@@ -27,15 +27,15 @@ ganache_bayc_address = "0x7287F635F2f60bc7238DB9470487017E7A2d8B23"
 bored_apes = web3.eth.contract(address=ganache_bayc_address, abi=abi.fetch_abi(mainnet_bayc_address))
 
 # enable sale
-# nonce = web3.eth.getTransactionCount(account_1)
-# flip_sale_tx = bored_apes.functions.flipSaleState().buildTransaction({
-#      'maxFeePerGas': web3.toWei('2', 'gwei'),
-#      'maxPriorityFeePerGas': web3.toWei('1', 'gwei'),
-#      'nonce': nonce,
-#      'from': web3.toChecksumAddress(account_1),
-#  })
-# signed_tx = web3.eth.account.signTransaction(flip_sale_tx, private_key_1)
-# tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
+nonce = web3.eth.getTransactionCount(account_1)
+flip_sale_tx = bored_apes.functions.flipSaleState().buildTransaction({
+     'maxFeePerGas': web3.toWei('2', 'gwei'),
+     'maxPriorityFeePerGas': web3.toWei('1', 'gwei'),
+     'nonce': nonce,
+     'from': web3.toChecksumAddress(account_1),
+ })
+signed_tx = web3.eth.account.signTransaction(flip_sale_tx, private_key_1)
+tx_hash = web3.eth.sendRawTransaction(signed_tx.rawTransaction)
 
 nonce = web3.eth.getTransactionCount(account_2)
 mint_ape_tx = bored_apes.functions.mintApe(1).buildTransaction({
