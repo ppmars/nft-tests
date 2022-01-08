@@ -1,7 +1,6 @@
 import json
 import math
 import time
-
 import js2py
 import requests
 import os
@@ -104,20 +103,32 @@ class OpenSea:
         params = self._build_request_params(_params, "events")
         headers = self.request_headers
         headers["X-API-KEY"] = self.api_keys["opensea"]
-        print(headers)
 
-        # opensea limit per request
-        # submit request to the OpenSea api
-        response = requests.request("GET", self.endpoints["events"], params=params, headers=headers)
-        # if response OK
+        # 300 is api limit
+        _num_loops = int(math.ceil(limit / 300))
         events = []
-        # print(response.text)
-        if response.status_code == 200:
-            response = json.loads(response.text)
-            for event in response['asset_events']:
-                events.append(Event(event))
+        for loop in range(1, _num_loops+1):
+            params['offset'] = loop * 300
+            # set limit
+            if limit - ((loop-1) * 300) > 300:
+                params['limit'] = 300
+            else:
+                params['limit'] = limit - ((loop-1) * 300)
+            # submit request to the OpenSea api
+            response = requests.request("GET", self.endpoints["events"], params=params, headers=headers)
+            # if response OK
+            # print(response.text)
+            if response.status_code == 200:
+                response = json.loads(response.text)
+                for event in response['asset_events']:
+                    events.append(Event(event))
+            else:
+                raise Exception(
+                    "[Error] request returned code {} with reason {}".format(response.status_code, response.reason))
+            if loop < _num_loops+1:
+                time.sleep(3)
         return events
-        raise Exception("[Error] request returned code {} with reason {}".format(response.status_code, response.reason))
+
 
 
 class Asset:
@@ -149,7 +160,9 @@ class Asset:
                 """
         }
         self.jsonData = jsonData
-        self.token_id = jsonData['token_id']
+        self.token_id = None
+        if 'token_id' in jsonData:
+            self.token_id = jsonData['token_id']
         self.name = jsonData['name']
 
         if jsonData['sell_orders']:
@@ -182,14 +195,19 @@ class Collection:
 class Event:
     def __init__(self, jsonData):
         self.jsonData = jsonData
-        self.token_id = jsonData['asset']['token_id']
-        self.name = jsonData['asset']['name']
+        self.token_id = None
+        self.ERC721address = None
+        self.name = None
+
+        if jsonData['asset'] is not None:
+            if 'token_id' in jsonData['asset']:
+                self.token_id = jsonData['asset']['token_id']
+            self.name = jsonData['asset']['name']
+            if jsonData["asset"]["asset_contract"]["asset_contract_type"] == "non-fungible":
+                self.ERC721address = jsonData["asset"]["asset_contract"]["address"]
         self.created_date = jsonData['created_date']
         self.is_private = jsonData['is_private']
         self.payment_token = jsonData['payment_token']
         self.total_price = jsonData['total_price']
         self.event_type = jsonData['event_type']
 
-        self.ERC721address = None
-        if jsonData["asset"]["asset_contract"]["asset_contract_type"] == "non-fungible":
-            self.ERC721address = jsonData["asset"]["asset_contract"]["address"]
