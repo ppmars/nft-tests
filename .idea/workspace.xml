@@ -4,12 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="ea79f6b4-1605-4913-984b-64a13ab95637" name="Changes" comment="hijack test">
+    <list default="true" id="ea79f6b4-1605-4913-984b-64a13ab95637" name="Changes" comment="test events functions">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OpenSea.py" beforeDir="false" afterPath="$PROJECT_DIR$/OpenSea.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/openSea-monitor.py" beforeDir="false" afterPath="$PROJECT_DIR$/openSea-monitor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/order.js" beforeDir="false" afterPath="$PROJECT_DIR$/order.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web3test.py" beforeDir="false" afterPath="$PROJECT_DIR$/web3test.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -153,7 +151,7 @@
       <workItem from="1641275237282" duration="18300000" />
       <workItem from="1641424429160" duration="1692000" />
       <workItem from="1641529585977" duration="27000" />
-      <workItem from="1641530563250" duration="5430000" />
+      <workItem from="1641530563250" duration="9058000" />
     </task>
     <task id="LOCAL-00001" summary="flipSaleState() and mintApe() calls implemented + working">
       <created>1641274481099</created>
@@ -211,7 +209,28 @@
       <option name="project" value="LOCAL" />
       <updated>1641424463374</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="added opensea api key">
+      <created>1641536181379</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1641536181379</updated>
+    </task>
+    <task id="LOCAL-00010" summary="added events class and retrieval methods">
+      <created>1641536204541</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1641536204541</updated>
+    </task>
+    <task id="LOCAL-00011" summary="test events functions">
+      <created>1641536212675</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1641536212675</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,11 +255,14 @@
     <MESSAGE value="removed test lines" />
     <MESSAGE value="cleaned up workspace" />
     <MESSAGE value="hijack test" />
-    <option name="LAST_COMMIT_MESSAGE" value="hijack test" />
+    <MESSAGE value="added opensea api key" />
+    <MESSAGE value="added events class and retrieval methods" />
+    <MESSAGE value="test events functions" />
+    <option name="LAST_COMMIT_MESSAGE" value="test events functions" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
     <SUITE FILE_PATH="coverage/nft_tests$OpenSea.coverage" NAME="OpenSea Coverage Results" MODIFIED="1641284094579" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/nft_tests$web3test.coverage" NAME="web3test Coverage Results" MODIFIED="1641427530093" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/nft_tests$openSea_monitor.coverage" NAME="openSea-monitor Coverage Results" MODIFIED="1641535982420" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/nft_tests$openSea_monitor.coverage" NAME="openSea-monitor Coverage Results" MODIFIED="1641620076119" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
 </project>
